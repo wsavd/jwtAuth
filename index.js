@@ -4,7 +4,7 @@ const http = require('http');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const app = express();
-const router = require('./router');
+const router = require('./routes/router');
 const mongoose = require('mongoose');
 
 // DB Setup
@@ -15,7 +15,9 @@ mongoose.connect('mongodb://localhost/jwt');
 app.use(morgan('combined'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-router(app);
+
+var index = require('./routes/router');
+app.use('/', index);
 
 // Server Setup
 const port = process.env.PORT || 3090;
