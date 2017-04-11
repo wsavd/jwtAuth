@@ -16,7 +16,7 @@ router.get('/', /*requireAuth,*/ function(req, res) {
   });*/
 //место встречи  
 router.get('/profile', passport.authenticate('jwt', { session: false }), function(req, res) {
-  res.send('profile');
+  res.send('profile аа');
 })  
 /*                          вход                              */
 //показываем форму

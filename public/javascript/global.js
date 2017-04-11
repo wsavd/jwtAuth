@@ -1,5 +1,6 @@
 $(document).ready(function  () {
         //создаем запись в бд о новом юзере
+        var test;
         $("#token").html(localStorage.getItem('token'));
         $("#signup-button").on('click', function  (e) {
             var email = $('#email');
@@ -37,11 +38,14 @@ $(document).ready(function  () {
             $.ajax({
                 url: 'http://localhost:8068/signin',
                 type: 'post',
-                dataType: 'json',
+                dataType: 'html',
                 data: dataForm,
+                async: true,
                 headers: {'authorization': localStorage.getItem('token')},
-                success: function(data) {
-                    console.log(token);
+                success: function(response) {
+                    console.log(response);
+                // Do what ever with the response here
+
                     //localStorage.setItem('token', data.token);//сохранили новый
                     //console.log(data.token)
                     //window.location.replace("http://localhost:8067/r");

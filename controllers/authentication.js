@@ -35,12 +35,14 @@ exports.signup = function(req, res, next) {
     });
 
     user.save(function(err) {
-      if (err) { return next(err); }
-
-      // Repond to request indicating the user was created
-      res.json({ token: tokenForUser(user),
+      if(err){
+        return res.send('err');
+      }
+      return res.json({ token: tokenForUser(user),
                  id: user._id })       
     });
-    //res.redirect('/profile');
+
+      // Repond to request indicating the user was created
+      
   });
 }
