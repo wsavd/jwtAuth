@@ -1,5 +1,6 @@
 $(document).ready(function  () {
         //создаем запись в бд о новом юзере
+        $("#token").html(localStorage.getItem('token'));
         $("#signup-button").on('click', function  (e) {
             var email = $('#email');
             var password = $("#password");
@@ -9,15 +10,14 @@ $(document).ready(function  () {
             }
 	 		e.preventDefault();
             $.ajax({
-                url: 'http://localhost:8067/signup',
+                url: 'http://localhost:8068/signup',
                 type: 'post',
                 dataType: 'json',
                 data: dataForm,
                 success: function(data) {
                     console.log("succes")
-                    console.log(data.token)
-                    localStorage.setItem('token', data.token);
-                    console.log(localStorage.getItem('token'));
+                    localStorage.setItem('token', data.token);//сохранили токен
+                    console.log(localStorage.getItem('token'));//вывели из локального хранилища
                 },
                 error: function (error) {
                     console.log(error);
@@ -33,18 +33,19 @@ $(document).ready(function  () {
                 password: password.val()
             }
 	 		e.preventDefault();
+            console.log(localStorage.getItem('token'));
             $.ajax({
-                url: 'http://localhost:8067/signin',
+                url: 'http://localhost:8068/signin',
                 type: 'post',
                 dataType: 'json',
                 data: dataForm,
                 headers: {'authorization': localStorage.getItem('token')},
                 success: function(data) {
-                    console.log("succes")
-                    localStorage.setItem('token', data.token);
-                    console.log(data.token)
-                    window.location.replace("http://localhost:8067/r");
-                    console.log(data._id)
+                    console.log(token);
+                    //localStorage.setItem('token', data.token);//сохранили новый
+                    //console.log(data.token)
+                    //window.location.replace("http://localhost:8067/r");
+                    //console.log(data._id)
                 },
                 error: function (error) {
                     console.log(error);

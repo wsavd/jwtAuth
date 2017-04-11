@@ -1,0 +1,10 @@
+extends layout.pug
+block content
+    div#token
+    a(href='/') Главная
+    form
+        input#email(name='email', value='', type='text')
+        |  
+        input#password(name='password', value='', type='text')
+        |  
+        button#signup-button Зарегистрироваться

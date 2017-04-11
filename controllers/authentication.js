@@ -39,7 +39,8 @@ exports.signup = function(req, res, next) {
 
       // Repond to request indicating the user was created
       res.json({ token: tokenForUser(user),
-                 id: user._id });
+                 id: user._id })       
     });
+    //res.redirect('/profile');
   });
 }

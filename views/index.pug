@@ -1,9 +1,5 @@
 extends layout.pug
 block content
-  form
-    input#email(name='email', value='', type='text')
-    |  
-    input#password(name='password', value='', type='text')
-    |  
-    button#signin-button Sign in
-    button#signup-button Sign up
+  div#token
+  a(href='/signin') Войти
+  a(href='/signup') Зарегистрироваться
