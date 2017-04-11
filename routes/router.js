@@ -8,8 +8,8 @@ const passport = require('passport');
 const requireAuth = passport.authenticate('jwt', { session: false });
 const requireSignin = passport.authenticate('local', { session: false });
 
-router.get('/', requireAuth, function(req, res) {
-    res.send({ hi: 'there' });
+router.get('/', function(req, res) {
+    res.render('index');
   });
 router.post('/signin', requireSignin, authentication.signin);
 router.post('/signup', authentication.signup);
