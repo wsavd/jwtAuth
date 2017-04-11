@@ -9,12 +9,15 @@ $(document).ready(function  () {
             }
 	 		e.preventDefault();
             $.ajax({
-                url: 'http://localhost:8045/signup',
+                url: 'http://localhost:8067/signup',
                 type: 'post',
                 dataType: 'json',
                 data: dataForm,
                 success: function(data) {
                     console.log("succes")
+                    console.log(data.token)
+                    localStorage.setItem('token', data.token);
+                    console.log(localStorage.getItem('token'));
                 },
                 error: function (error) {
                     console.log(error);
@@ -23,24 +26,25 @@ $(document).ready(function  () {
 	 	})
         //POST /api/authenticate проверили что такой user в базе есть, сохранили, полученный токен в локальное хранилище
 	 	$("#signin-button").on('click', function  (e) {
-            var name = $('#name');
+            var email = $('#email');
             var password = $("#password");
             var dataForm = {
-                name: name.val(),
+                email: email.val(),
                 password: password.val()
             }
 	 		e.preventDefault();
             $.ajax({
-                url: 'http://localhost:3075/signin',
+                url: 'http://localhost:8067/signin',
                 type: 'post',
                 dataType: 'json',
                 data: dataForm,
+                headers: {'authorization': localStorage.getItem('token')},
                 success: function(data) {
                     console.log("succes")
                     localStorage.setItem('token', data.token);
                     console.log(data.token)
+                    window.location.replace("http://localhost:8067/r");
                     console.log(data._id)
-                    userList()
                 },
                 error: function (error) {
                     console.log(error);

@@ -11,6 +11,9 @@ const requireSignin = passport.authenticate('local', { session: false });
 router.get('/', function(req, res) {
     res.render('index');
   });
+router.get('/r', function(req, res) {
+    res.send("redirected");
+  });
 router.post('/signin', requireSignin, authentication.signin);
 router.post('/signup', authentication.signup);
 
