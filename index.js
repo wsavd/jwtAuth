@@ -10,7 +10,7 @@ const path = require('path');
 
 // DB Setup
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/jwt');
+mongoose.connect('mongodb://localhost/jrr');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -26,7 +26,7 @@ var index = require('./routes/router');
 app.use('/', index);
 
 // Server Setup
-const port = process.env.PORT || 3098;
+const port = process.env.PORT || 8045;
 const server = http.createServer(app);
 server.listen(port);
 console.log('Server listening on:', port);

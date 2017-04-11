@@ -9,7 +9,7 @@ $(document).ready(function  () {
             }
 	 		e.preventDefault();
             $.ajax({
-                url: 'http://localhost:3090/signup',
+                url: 'http://localhost:8045/signup',
                 type: 'post',
                 dataType: 'json',
                 data: dataForm,
@@ -31,7 +31,7 @@ $(document).ready(function  () {
             }
 	 		e.preventDefault();
             $.ajax({
-                url: 'http://localhost:8087/api/authenticate',
+                url: 'http://localhost:3075/signin',
                 type: 'post',
                 dataType: 'json',
                 data: dataForm,
@@ -49,7 +49,7 @@ $(document).ready(function  () {
 	 	});
 //отправлят ajax 
 //$('#get-button').on('click', function() {
-function userList() {
+/*function userList() {
     $.ajax({
     url: 'http://localhost:8087/api/users',
     type: 'GET',
@@ -78,6 +78,6 @@ function userList() {
         console.log(error);
                 }
     });
-};
+};*/
 });
 //});
